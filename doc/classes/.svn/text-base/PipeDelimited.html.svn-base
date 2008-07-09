@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: PipeDelimited</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">PipeDelimited</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/piped_rb.html">
+                lib/piped.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Piped a fast minimal file parser designed to operated against well delimited text files.</h1>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000003">each</a>&nbsp;&nbsp;
+      <a href="#M000004">each_with_index</a>&nbsp;&nbsp;
+      <a href="#M000001">new</a>&nbsp;&nbsp;
+      <a href="#M000005">next_line</a>&nbsp;&nbsp;
+      <a href="#M000002">open_file</a>&nbsp;&nbsp;
+      <a href="#M000007">parse_header</a>&nbsp;&nbsp;
+      <a href="#M000006">parse_line</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">current_line</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">header_cols</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">line_number</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000001.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000001.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(input_file, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the default options. Defaults to:
+</p>
+<ul>
+<li>:field_delimiter = &quot;|&quot;
+
+</li>
+<li>:row_delimiter = &quot;&lt;EOL&gt;&quot;
+
+</li>
+<li>:trim_spaces = true
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000003.html');return false;">
+          <span class="method-name">each</span><span class="method-args">() {|output| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Each iterator will return <a href="PipeDelimited.html#M000003">each</a>
+<b>data</b> row in the file as a hash. Each column will be stored under
+it&#8216;s related column name. If you want to get the header columns, call
+the header_cols attribute
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000004.html');return false;">
+          <span class="method-name">each_with_index</span><span class="method-args">() {|line, @line_number| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Similar to <a href="PipeDelimited.html#M000003">each</a>, but yields the
+line_number as the second parameter. The header row is considered line 0.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000005.html');return false;">
+          <span class="method-name">next_line</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns <a href="PipeDelimited.html#M000003">each</a> subsequent line in
+the file until the EOF is reached.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000002.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000002.html');return false;">
+          <span class="method-name">open_file</span><span class="method-args">(file_name = @input_file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Open the file and mark the file_opened flag.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000007.html');return false;">
+          <span class="method-name">parse_header</span><span class="method-args">(header_line)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+parses the header line into an Array of columns
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="PipeDelimited.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('PipeDelimited.src/M000006.html');return false;">
+          <span class="method-name">parse_line</span><span class="method-args">(line)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+parses <a href="PipeDelimited.html#M000003">each</a> data line of the file
+and returns a hash with items properly mapped to the header column
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_empty_column (PipedTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/piped_test.rb, line 74</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_empty_column</span>
+    <span class="ruby-identifier">pd</span> = <span class="ruby-ivar">@pd</span>
+    
+    <span class="ruby-comment cmt"># pop the two lines we don't care about</span>
+    <span class="ruby-identifier">pd</span>.<span class="ruby-identifier">next_line</span>
+    <span class="ruby-identifier">pd</span>.<span class="ruby-identifier">next_line</span>
+    <span class="ruby-identifier">line</span> = <span class="ruby-identifier">pd</span>.<span class="ruby-identifier">next_line</span>
+    
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>,         <span class="ruby-identifier">line</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">size</span>)
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'lisa'</span>,    <span class="ruby-identifier">line</span>[<span class="ruby-value str">'first'</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">'tolton'</span>,  <span class="ruby-identifier">line</span>[<span class="ruby-value str">'last'</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value str">''</span>,        <span class="ruby-identifier">line</span>[<span class="ruby-value str">'age'</span>])
+    <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>,         <span class="ruby-identifier">pd</span>.<span class="ruby-identifier">line_number</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

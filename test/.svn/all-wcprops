@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/tools/!svn/ver/9/ruby/gems/piped/test
+END
+piped_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/tools/!svn/ver/9/ruby/gems/piped/test/piped_test.rb
+END
+test_data_pipe.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/tools/!svn/ver/9/ruby/gems/piped/test/test_data_pipe.txt
+END
