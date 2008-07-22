@@ -1,4 +1,5 @@
-require '../lib/delimited_file'
+require File.join(File.dirname(__FILE__), '../lib/delimited_file')
+
 
 describe DelimitedFile do
   
@@ -18,7 +19,7 @@ describe DelimitedFile do
   
     it "should be able to parse header rows"  do
       df = DelimitedFile.new("")
-      header_cols = df.parse_header(@header)
+      header_cols = df.parse_header(df.split_line(@header))
 
       header_cols.size.should == 3
     end
@@ -27,7 +28,7 @@ describe DelimitedFile do
       header = "First<COL>Last<COL>Age"
 
       df = DelimitedFile.new("", :column_case => :upper)
-      header_cols = df.parse_header(@header)
+      header_cols = df.parse_header(df.split_line(@header))
 
       header_cols.size.should == 3
       header_cols[0].should == 'FIRST'
@@ -39,7 +40,7 @@ describe DelimitedFile do
       header = "First<COL>Last<COL>Age"
 
       df = DelimitedFile.new("", :column_case => :retain)
-      header_cols = df.parse_header(header)
+      header_cols = df.parse_header(df.split_line(header))
 
       header_cols[0].should == 'First'
       header_cols[1].should == 'Last'
@@ -50,7 +51,7 @@ describe DelimitedFile do
       header = "first;last;age"
 
       df = DelimitedFile.new("", :field_delimiter => ";")
-      header_cols = df.parse_header(header)
+      header_cols = df.parse_header(df.split_line(header))
 
       header_cols.size.should == 3
       header_cols[0].should == 'first'

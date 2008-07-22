@@ -13,5 +13,5 @@ spec = Gem::Specification.new do |spec|
   spec.test_files = Dir['test/*']
   spec.has_rdoc = true
   spec.files = Dir['lib/*.rb'] + spec.test_files
-  spec.version = '0.4.0'
+  spec.version = '0.4.1'
 end

@@ -77,6 +77,10 @@ class DelimitedFile
     raise ArgumentError, "Cannot write to a file unless the file is opened with :mode => :write" unless @mode == :write
   end
   
+  def file_name
+    @input_file
+  end
+  
   # Each iterator will return each *data* row in the file as a hash.
   # Each column will be stored under it's related column name.
   # If you want to get the header columns, call the header_cols attribute
@@ -108,37 +112,40 @@ class DelimitedFile
   
   # Returns each subsequent line in the file until the EOF is reached.
   def next_line
+    parse_line(raw_line)
+  end
+  
+  def raw_line
     read_guard
-    open_file(@input_file) if !@file_opened
-    
+    open_file
     @current_line = @fh.readline(@row_delimiter)
-    
     if @line_number == nil
       @line_number = 0
-      @header_cols = parse_header(@current_line)
-      return next_line
+      @header_cols = parse_header(split_line(@current_line))
+      return raw_line
     else
       @line_number += 1
-      return parse_line(current_line)
+      return split_line(@current_line)
     end
+  end
   
+  def split_line(line)
+    # Passing -1 to split allows it to return trailing null fields
+    line.gsub(@row_delimiter, '').split(@field_delimiter, -1)    
   end
   
   # parses each data line of the file and returns a hash with items properly mapped to the header column
   def parse_line(line)
     output_hash = {}
     
-    # Passing -1 to split allows it to return trailing null fields
-    split_line = line.gsub(@row_delimiter, '').split(@field_delimiter, -1)
-    
     # Trim out extraneous spaces
     if @options[:trim_spaces]
-      split_line.collect! {|el| el.strip}
+      line.collect! {|el| el.strip}
     end
     
     # loop through each line of the file and assign ech column to a hash 
     # based on the ordinal position of the header column
-    split_line.each_with_index do |element, index|
+    line.each_with_index do |element, index|
       output_hash[@header_cols[index]] = element
     end
     
@@ -148,7 +155,7 @@ class DelimitedFile
   # parses the header line into an Array of columns
   def parse_header(header_line)
     
-    header_line.gsub(@row_delimiter, '').split(@field_delimiter).collect {|item|
+    header_line.collect {|item|
       case @options[:column_case]
       when :lower
         item.downcase
@@ -172,6 +179,20 @@ class DelimitedFile
     end
     
     close_file
+  end
+  
+  def write_header(line)
+    write_guard
+    open_file
+    
+    @fh.print(generate_header(line))
+  end
+  
+  def write_line(line)
+    write_guard
+    open_file
+    
+    @fh.print(generate_line(line))
   end
   
   # extracts the header line from a given hash
